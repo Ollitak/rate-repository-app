@@ -12,12 +12,16 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 5,
   },
+  error: {
+    borderColor: theme.colors.error,
+  }
 });
 
 const TextInput = ({ style, size, error, ...props }) => {
   const textInputStyle = [
     styles.common,
-    size === "large" && styles.sizeLarge
+    size === "large" && styles.sizeLarge,
+    error && styles.error,
   ];
 
   return (

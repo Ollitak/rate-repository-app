@@ -7,7 +7,8 @@ const theme = {
     mainBackground: '#e1e4e8',
     blueButtonBackground: '#0366d6',
     blueButtonText: 'white',
-    backGround: 'white'
+    backGround: 'white',
+    error: '#d73a4a',
   },
   fontSizes: {
     body: 14,
