@@ -5,8 +5,8 @@ const theme = {
     primary: '#0366d6',
     appBarBackground: '#24292e',
     mainBackground: '#e1e4e8',
-    languageTag: '#0366d6',
-    languageText: 'white',
+    blueButtonBackground: '#0366d6',
+    blueButtonText: 'white',
     backGround: 'white'
   },
   fontSizes: {

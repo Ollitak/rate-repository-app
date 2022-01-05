@@ -1,9 +1,56 @@
 import React from 'react';
-
+import { Formik } from 'formik';
+import FormikTextInput from './FormikTextInput';
 import Text from './Text';
+import { Pressable, View, StyleSheet } from 'react-native';
+import theme from '../theme';
+
+const initialValues = {
+  username: "",
+  password: "",
+};
+
+const styles = StyleSheet.create({
+  inputContainer: {
+    padding: 10,
+    backgroundColor: theme.colors.backGround
+  },
+  signInButton: {
+    backgroundColor: theme.colors.blueButtonBackground,
+    borderRadius: 5,
+    marginTop: 10,
+  },
+  signInButtonText: {
+    color: theme.colors.blueButtonText,
+    textAlign: "center",
+    padding: 15,
+  }
+});
+
+const SignInForm = ({ onSubmit }) => {
+  return (
+    <View style={styles.inputContainer}>
+      <FormikTextInput name="username" placeholder="Username"/>
+      <FormikTextInput name="password" placeholder="Password"/>
+      <Pressable style={styles.signInButton} onPress={onSubmit}>
+        <Text fontSize={"subHeading"} fontWeight={"bold"} style={styles.signInButtonText}>Sign in</Text>
+      </Pressable>
+    </View>
+  );
+};
 
 const SignIn = () => {
-  return <Text>The sign-in view</Text>;
+  const onSubmit = (values) => {
+    const username = values.username;
+    const password = values.password;
+    console.log(`Username: ${username} , password: ${password}`);
+  };
+
+  return  (
+    <Formik initialValues={initialValues} onSubmit={onSubmit}>
+      {({ handleSubmit }) => <SignInForm onSubmit={handleSubmit} />}
+    </Formik>
+  );  
 };
 
 export default SignIn;

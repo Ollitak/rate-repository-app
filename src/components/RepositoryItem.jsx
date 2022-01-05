@@ -30,8 +30,8 @@ const cardHeaderStyles = StyleSheet.create({
   languageText: {
     padding: 5,
     borderRadius: 5,
-    backgroundColor: theme.colors.languageTag,
-    color: theme.colors.languageText
+    backgroundColor: theme.colors.blueButtonBackground,
+    color: theme.colors.blueButtonText,
   },
 });
 
