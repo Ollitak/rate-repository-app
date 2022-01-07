@@ -4,6 +4,8 @@ import { Link } from "react-router-native";
 import Text from './Text';
 import Constants from 'expo-constants';
 import theme from '../theme';
+import { useQuery } from '@apollo/client';
+import { GET_AUTHORIZED_USER } from '../graphql/queries';
 
 
 const styles = StyleSheet.create({
@@ -17,8 +19,8 @@ const styles = StyleSheet.create({
     flexGrow: 0,
   },
   tabText: {
-    padding: 10,
     color: "white",
+    padding: 10,
   }
 });
 
@@ -33,11 +35,24 @@ const Tab = ({ linkTo, tabName }) => {
 };
 
 const AppBar = () => {
+  const { data } = useQuery(GET_AUTHORIZED_USER);
+  if(data && data.authorizedUser){
+    console.log("ACCESS TOKEN OK - USER FOUND");
+  } else {
+    console.log("ACCESS TOKEN NOT FOUND");
+  }
+
   return (
   <View style={styles.container}>
     <ScrollView horizontal>
       <Tab linkTo={"/"} tabName={"Repositories"}></Tab>
-      <Tab linkTo={"/signin"} tabName={"Sign in"}></Tab>
+      { 
+        data && data.authorizedUser
+      ? 
+        <Tab linkTo={"/signout"} tabName={"Sign out"}></Tab>
+      : 
+        <Tab linkTo={"/signin"} tabName={"Sign in"}></Tab>
+      }
     </ScrollView>
   </View>
   );

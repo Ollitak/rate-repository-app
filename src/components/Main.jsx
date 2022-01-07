@@ -2,6 +2,7 @@ import React from 'react';
 import AppBar from './AppBar';
 import RepositoryList from './RepositoryList';
 import SignIn from './SignIn';
+import SignOut from './SignOut';
 import Constants from 'expo-constants';
 import { StyleSheet, View } from 'react-native';
 import { Route, Switch, Redirect } from 'react-router-native';
@@ -26,6 +27,9 @@ const Main = () => {
         </Route>
         <Route path="/signin">
           <SignIn />
+        </Route>
+        <Route path="/signout">
+          <SignOut />
         </Route>
         <Redirect to="/" />
       </Switch>
