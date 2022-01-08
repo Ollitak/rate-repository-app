@@ -1,7 +1,9 @@
 import React from 'react';
-import { View, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet, Image, Pressable } from 'react-native';
 import Text from './Text';
 import theme from '../theme';
+//import * as Linking from 'expo-linking';
+
 
 const cardHeaderStyles = StyleSheet.create({
   container: {
@@ -92,6 +94,40 @@ const CardStatistics = ({ item }) => {
   );
 };
 
+const gitHubButtonStyles = StyleSheet.create({
+  container: {
+    display: "flex",
+    flexDirection: "row",
+    flex: 1,
+    marginTop: 5,
+  },
+  button: {
+    flexGrow: 1,
+    backgroundColor: theme.colors.blueButtonBackground,
+    borderRadius: 5,
+    padding: 15,
+  },
+  text: {
+    textAlign: "center",
+    color: theme.colors.blueButtonText,
+  }
+});
+
+const onPress = () => {
+  console.log("GitHub button pressed");
+  //Linking.openURL('https://expo.dev');
+};
+
+const GitHubButton = ({ item }) => {
+  return(
+    <View style={gitHubButtonStyles.container}>
+      <Pressable style={gitHubButtonStyles.button} onPress={onPress}>
+        <Text style={gitHubButtonStyles.text}> Open in GitHub </Text>
+      </Pressable>
+    </View>
+  );
+};
+
 
 const cardStyles = StyleSheet.create({
   container: {
@@ -102,12 +138,13 @@ const cardStyles = StyleSheet.create({
 });
 
 
-const RepositoryItem = ({ item }) => {  
+const RepositoryItem = ({ item }) => {
   return (
-  <View style={cardStyles.container}>
-    <CardHeader item={item}></CardHeader>
-    <CardStatistics item={item}></CardStatistics>
-  </View>
+    <View style={cardStyles.container}>
+      <CardHeader item={item}></CardHeader>
+      <CardStatistics item={item}></CardStatistics>
+      {item.idField ? <GitHubButton item={item}></GitHubButton> : null}
+    </View>
   );
 };
 

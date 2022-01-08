@@ -7,6 +7,7 @@ import Constants from 'expo-constants';
 import { StyleSheet, View } from 'react-native';
 import { Route, Switch, Redirect } from 'react-router-native';
 import theme from '../theme';
+import SingleRepositoryView from './SingleRepositoryView';
 
 const styles = StyleSheet.create({
   container: {
@@ -30,6 +31,9 @@ const Main = () => {
         </Route>
         <Route path="/signout">
           <SignOut />
+        </Route>
+        <Route path="/:id">
+          <SingleRepositoryView />
         </Route>
         <Redirect to="/" />
       </Switch>
