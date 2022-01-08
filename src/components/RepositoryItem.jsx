@@ -42,10 +42,10 @@ const CardHeader = ({ item }) => {
         <Image style={cardHeaderStyles.picture} source={{uri: item.ownerAvatarUrl}}/>
       </View>
       <View style={cardHeaderStyles.informationView}>
-        <Text fontSize={"subHeading"} fontWeight={"bold"} style={cardHeaderStyles.informationText}>{item.fullName}</Text> 
-        <Text fontSize={"subHeading"} style={cardHeaderStyles.informationText}>{item.description} </Text>
+        <Text testID="fullName" fontSize={"subHeading"} fontWeight={"bold"} style={cardHeaderStyles.informationText}>{item.fullName}</Text> 
+        <Text testID="description" fontSize={"subHeading"} style={cardHeaderStyles.informationText}>{item.description} </Text>
         <View style={cardHeaderStyles.languageView}>
-          <Text fontSize={"subHeading"} style={cardHeaderStyles.languageText}>{item.language} </Text>
+          <Text testID="language" fontSize={"subHeading"} style={cardHeaderStyles.languageText}>{item.language} </Text>
         </View>
       </View>
     </View>
@@ -73,19 +73,19 @@ const CardStatistics = ({ item }) => {
   return (
     <View style={cardStatisticsStyles.container}>
       <View style={cardStatisticsStyles.rowView}>
-        <Text style={{textAlign: 'center'}} fontWeight={"bold"}>{numberFormatting(item.stargazersCount)}</Text>
+        <Text style={{textAlign: 'center'}} fontWeight={"bold"} testID="stargazersCount">{numberFormatting(item.stargazersCount)}</Text>
         <Text style={{textAlign: 'center'}}>Stars</Text>
       </View>
       <View style={cardStatisticsStyles.rowView}>
-        <Text style={{textAlign: 'center'}} fontWeight={"bold"}>{numberFormatting(item.forksCount)}</Text>
+        <Text style={{textAlign: 'center'}} fontWeight={"bold"} testID="forksCount">{numberFormatting(item.forksCount)}</Text>
         <Text style={{textAlign: 'center'}}>Forks</Text>
       </View>
       <View style={cardStatisticsStyles.rowView}>
-        <Text style={{textAlign: 'center'}} fontWeight={"bold"}>{numberFormatting(item.reviewCount)}</Text>
+        <Text style={{textAlign: 'center'}} fontWeight={"bold"} testID="reviewCount">{numberFormatting(item.reviewCount)}</Text>
         <Text style={{textAlign: 'center'}}>Reviews</Text>
       </View>
       <View style={cardStatisticsStyles.rowView}>
-        <Text style={{textAlign: 'center'}} fontWeight={"bold"}>{numberFormatting(item.ratingAverage)}</Text>
+        <Text style={{textAlign: 'center'}} fontWeight={"bold"} testID="ratingAverage">{numberFormatting(item.ratingAverage)}</Text>
         <Text style={{textAlign: 'center'}}>Rating</Text>
       </View>
     </View>
