@@ -1,4 +1,3 @@
-/* eslint-disable jest/expect-expect */
 import { RepositoryListContainer } from "../../components/RepositoryList";
 import { render } from '@testing-library/react-native';
 import React from 'react';
@@ -59,7 +58,7 @@ describe('RepositoryList', () => {
         "ratingAverage"
       ];
 
-      const { debug, getAllByTestId } = render(<RepositoryListContainer repositories={repositories}/>);
+      const { getAllByTestId } = render(<RepositoryListContainer repositories={repositories}/>);
 
       expect(getAllByTestId(testIDFields[0])[0]).toHaveTextContent("jaredpalmer/formik");
       expect(getAllByTestId(testIDFields[1])[0]).toHaveTextContent("Build forms in React, without the tears");
