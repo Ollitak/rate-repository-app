@@ -17,6 +17,7 @@ query {
         description
         language
         ownerAvatarUrl
+        url
       }
     cursor
     }
@@ -39,6 +40,7 @@ query GET_REPOSITORY($id: ID!) {
     description
     language
     ownerAvatarUrl
+    url
   }
 }
 `;

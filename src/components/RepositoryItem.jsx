@@ -1,8 +1,7 @@
 import React from 'react';
-import { View, StyleSheet, Image, Pressable } from 'react-native';
+import { View, StyleSheet, Image, Pressable, Linking } from 'react-native';
 import Text from './Text';
 import theme from '../theme';
-//import * as Linking from 'expo-linking';
 
 
 const cardHeaderStyles = StyleSheet.create({
@@ -113,15 +112,15 @@ const gitHubButtonStyles = StyleSheet.create({
   }
 });
 
-const onPress = () => {
+const onPress = (item) => {
   console.log("GitHub button pressed");
-  //Linking.openURL('https://expo.dev');
+  Linking.openURL(item.url);
 };
 
 const GitHubButton = ({ item }) => {
   return(
     <View style={gitHubButtonStyles.container}>
-      <Pressable style={gitHubButtonStyles.button} onPress={onPress}>
+      <Pressable style={gitHubButtonStyles.button} onPress={() => onPress(item)}>
         <Text style={gitHubButtonStyles.text}> Open in GitHub </Text>
       </Pressable>
     </View>
