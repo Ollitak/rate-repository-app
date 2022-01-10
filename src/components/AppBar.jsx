@@ -34,6 +34,29 @@ const Tab = ({ linkTo, tabName }) => {
   );
 };
 
+const OnLoggedIn = () => {
+  return (
+    <View style={styles.container}>
+    <ScrollView horizontal>
+      <Tab linkTo={"/"} tabName={"Repositories"}></Tab>
+      <Tab linkTo={"/reviewform"} tabName={"Give a review"}></Tab>
+      <Tab linkTo={"/signout"} tabName={"Sign out"}></Tab>
+    </ScrollView>
+  </View>
+  ); 
+};
+
+const OnLoggedOut = () => {
+  return (
+    <View style={styles.container}>
+    <ScrollView horizontal>
+      <Tab linkTo={"/"} tabName={"Repositories"}></Tab>
+      <Tab linkTo={"/signin"} tabName={"Sign in"}></Tab>
+    </ScrollView>
+  </View>
+  ); 
+};
+
 const AppBar = () => {
   const { data } = useQuery(GET_AUTHORIZED_USER);
   if(data && data.authorizedUser){
@@ -42,20 +65,8 @@ const AppBar = () => {
     console.log("ACCESS TOKEN NOT FOUND");
   }
 
-  return (
-  <View style={styles.container}>
-    <ScrollView horizontal>
-      <Tab linkTo={"/"} tabName={"Repositories"}></Tab>
-      { 
-        data && data.authorizedUser
-      ? 
-        <Tab linkTo={"/signout"} tabName={"Sign out"}></Tab>
-      : 
-        <Tab linkTo={"/signin"} tabName={"Sign in"}></Tab>
-      }
-    </ScrollView>
-  </View>
-  );
+  return data && data.authorizedUser ? <OnLoggedIn /> :  <OnLoggedOut />;
+
 };
 
 export default AppBar;

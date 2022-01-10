@@ -8,6 +8,7 @@ import { StyleSheet, View } from 'react-native';
 import { Route, Switch, Redirect } from 'react-router-native';
 import theme from '../theme';
 import SingleRepositoryView from './SingleRepositoryView';
+import ReviewForm from './ReviewForm';
 
 const styles = StyleSheet.create({
   container: {
@@ -31,6 +32,9 @@ const Main = () => {
         </Route>
         <Route path="/signout">
           <SignOut />
+        </Route>
+        <Route path="/reviewform">
+          <ReviewForm />
         </Route>
         <Route path="/:id">
           <SingleRepositoryView />

@@ -8,4 +8,14 @@ mutation authorize($data: AuthorizeInput) {
 }
 `;
 
+export const NEW_REVIEW = gql`
+mutation createReview($review: CreateReviewInput) {
+  createReview(review: $review) {
+    id
+    repositoryId
+  }
+}
+`;
+
+
 // other queries...
