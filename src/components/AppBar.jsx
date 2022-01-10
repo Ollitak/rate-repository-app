@@ -52,6 +52,7 @@ const OnLoggedOut = () => {
     <ScrollView horizontal>
       <Tab linkTo={"/"} tabName={"Repositories"}></Tab>
       <Tab linkTo={"/signin"} tabName={"Sign in"}></Tab>
+      <Tab linkTo={"/signup"} tabName={"Sign up"}></Tab>
     </ScrollView>
   </View>
   ); 
