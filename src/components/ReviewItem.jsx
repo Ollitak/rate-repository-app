@@ -41,7 +41,12 @@ const ReviewItem = ({ review }) => {
 
 
       <View style={styles.textContainer}>
-        <Text fontSize={"subHeading"} fontWeight={"bold"}> {review.node.user.username} </Text>
+        { 
+          review.myreview ? 
+          <Text fontSize={"subHeading"} fontWeight={"bold"}> {review.node.repository.fullName} </Text>
+          :
+          <Text fontSize={"subHeading"} fontWeight={"bold"}> {review.node.user.username} </Text>
+        }
         <Text fontSize={"subHeading"}> {review.node.createdAt.split("T")[0]} </Text>
         <Text fonstSize={"subHeading"}> {review.node.text} </Text>   
       </View>

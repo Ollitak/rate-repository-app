@@ -39,6 +39,7 @@ const OnLoggedIn = () => {
     <View style={styles.container}>
     <ScrollView horizontal>
       <Tab linkTo={"/"} tabName={"Repositories"}></Tab>
+      <Tab linkTo={"/myreviews"} tabName={"My reviews"}></Tab>
       <Tab linkTo={"/reviewform"} tabName={"Give a review"}></Tab>
       <Tab linkTo={"/signout"} tabName={"Sign out"}></Tab>
     </ScrollView>

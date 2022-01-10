@@ -70,10 +70,28 @@ query GET_REPOSITORY($first: Int, $after: String, $id: ID!) {
 `;
 
 export const GET_AUTHORIZED_USER = gql`
-query {
+query getAuthorizedUser($includeReviews: Boolean = false) {
   authorizedUser {
     id
     username
+    reviews @include(if: $includeReviews) {
+        edges {
+          node {
+            id
+          	text
+          	rating
+          	createdAt
+          	user {
+            	id
+            	username
+          	}
+            repository {
+              fullName
+            }
+          }
+          cursor
+        }
+      }
   }
 }
 `;
