@@ -15,9 +15,12 @@ const useRepositories = (sortOrder, searchKeyword, first) => {
       searchParameter = {orderBy: "CREATED_AT"}; 
   }
 
+  
   const { data, loading, fetchMore, ...result } = useQuery(GET_REPOSITORIES, {
-    fetchPolicy: 'cache-and-network', variables: searchParameter
+    fetchPolicy: 'cache-and-network',
+    variables: searchParameter
   });
+
 
   const handleFetchMore = () => {
     const canFetchMore = !loading && data?.repositories.pageInfo.hasNextPage;
@@ -30,8 +33,8 @@ const useRepositories = (sortOrder, searchKeyword, first) => {
     fetchMore({
       variables: {
         after: data.repositories.pageInfo.endCursor,
-        searchParameter,
-      },
+        searchParameter
+      }
     });
   };
 

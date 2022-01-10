@@ -40,12 +40,15 @@ const ItemSeparator = () => <View style={styles.separator} />;
 
 const SingleRepositoryView = () => {
   const { id } = useParams();
-  const { repository } = useRepository(id);
+  const { repository, fetchMore } = useRepository(id);
 
   if(!repository) return <></>;
 
-  // Data =
-  //console.log(repository.reviews.edges);
+  const onEndReach = () => {
+    console.log('You have reached the end of the list');
+    fetchMore();
+
+  };
 
   return (
     <View>
@@ -54,7 +57,10 @@ const SingleRepositoryView = () => {
         renderItem={({ item }) => <ReviewItem review={item} />}
         keyExtractor={(item) => item.node.id}
         ItemSeparatorComponent={ItemSeparator}
+        onEndReached={onEndReach}
+        onEndReachedThreshold={0.5}
         ListHeaderComponent={() =><RepositoryInfo repository={repository} />}
+        contentContainerStyle={{ paddingBottom: 100 }}
         />
     </View>
     );

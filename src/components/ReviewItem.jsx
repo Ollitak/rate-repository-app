@@ -1,7 +1,6 @@
 import React from 'react';
-import { StyleSheet, FlatList, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Text from './Text';
-import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 import theme from '../theme';
 
 const styles = StyleSheet.create({
