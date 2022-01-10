@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextInput as NativeTextInput, View, StyleSheet } from 'react-native';
+import { TextInput as NativeTextInput, StyleSheet } from 'react-native';
 import theme from '../theme';
 
 const styles = StyleSheet.create({
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const TextInput = ({ style, size, background, error, ...props }) => {
+const TextInput = ({ size, background, error, ...props }) => {
   const textInputStyle = [
     styles.common,
     size === "large" && styles.sizeLarge,

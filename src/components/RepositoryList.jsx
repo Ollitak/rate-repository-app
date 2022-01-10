@@ -46,7 +46,7 @@ export class RepositoryListContainer extends React.Component {
       // helper component to render clickable items
       const renderItem = ({ item }) => {
         const onPress = () => {
-          history.push(`/${item.id}`);
+          props.history.push(`/${item.id}`);
         };
         return (
           <TouchableOpacity onPress={onPress}>
@@ -61,6 +61,8 @@ export class RepositoryListContainer extends React.Component {
         ItemSeparatorComponent={ItemSeparator}
         renderItem={renderItem}
         ListHeaderComponent={this.renderHeader}
+        onEndReached={props.onEndReach}
+        onEndReachedThreshold={0.5}
       />
     );
   }
@@ -112,13 +114,26 @@ const ItemSeparator = () => <View style={styles.separator} />;
 const RepositoryList = () => {
   const history = useHistory();
   const [sortOrder, setSortOrder] = useState('LATEST');
-  const [filter, setFilter] = useState('ze');
+  const [filter, setFilter] = useState('');
   const [filterDecounced] = useDebounce(filter, 500);
 
-  const { repositories } = useRepositories(sortOrder, filterDecounced);
+  const { repositories, fetchMore } = useRepositories(sortOrder, filterDecounced, 5);
+  
+  const onEndReach = () => {
+    console.log("You have reached the end of the list");
+    fetchMore();
+  };
 
   return (
-    <RepositoryListContainer repositories={repositories} history={history} setSortOrder={setSortOrder} sortOrder={sortOrder} filter={filter} setFilter={setFilter}/>
+    <RepositoryListContainer 
+      repositories={repositories} 
+      history={history} 
+      setSortOrder={setSortOrder} 
+      sortOrder={sortOrder} 
+      filter={filter} 
+      setFilter={setFilter}
+      onEndReach={onEndReach}
+      />
   );
 };
 
