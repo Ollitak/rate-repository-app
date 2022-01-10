@@ -12,15 +12,19 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 5,
   },
+  backgroundWhite: {
+    backgroundColor: theme.colors.blueButtonText
+  },
   error: {
     borderColor: theme.colors.error,
   }
 });
 
-const TextInput = ({ style, size, error, ...props }) => {
+const TextInput = ({ style, size, background, error, ...props }) => {
   const textInputStyle = [
     styles.common,
     size === "large" && styles.sizeLarge,
+    background === "white" && styles.backgroundWhite,
     error && styles.error,
   ];
 

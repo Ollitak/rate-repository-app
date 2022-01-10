@@ -1,16 +1,16 @@
 import { useQuery } from '@apollo/client';
 import { GET_REPOSITORIES } from '../graphql/queries';
 
-const useRepositories = (sortOrder) => {
+const useRepositories = (sortOrder, searchKeyword) => {
   let searchParameter = {};
 
   switch(sortOrder) {
     case 'LATEST':
-      searchParameter = {orderBy: "CREATED_AT"}; break;
+      searchParameter = {orderBy: "CREATED_AT", searchKeyword}; break;
     case 'RATING_ASC':
-      searchParameter = {orderBy: "RATING_AVERAGE", orderDirection: "ASC"}; break;
+      searchParameter = {orderBy: "RATING_AVERAGE", orderDirection: "ASC", searchKeyword}; break;
     case 'RATING_DESC':
-      searchParameter = {orderBy: "RATING_AVERAGE", orderDirection: "DESC"}; break;
+      searchParameter = {orderBy: "RATING_AVERAGE", orderDirection: "DESC", searchKeyword}; break;
     default:
       searchParameter = {orderBy: "CREATED_AT"}; 
   }
