@@ -28,7 +28,6 @@ const MyReviews = () => {
  
   const ItemSeparator = () => <View style={styles.separator} />;
 
-
   return (
     <View style={{marginTop: 4}}>
       <FlatList 
